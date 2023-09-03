@@ -19,7 +19,7 @@ This tool is for Emicool employees only.
 """
 
 def clean_text(text):
-    new = text.replace("'generated_text:'","")
+    new = text.replace('generated_text:',"")
     return new
 # Hagging face API
 API_URL = "https://api-inference.huggingface.co/models/grammarly/coedit-large"
