@@ -19,7 +19,7 @@ This tool is for Emicool employees only.
 """
 
 def clean_text(text):
-    new = str(txt)
+    new = str(text)
     new = new.replace("[{'generated_text':", "")
     new = new.replace("[{", "")
     new = new.replace("}]", "")
