@@ -15,3 +15,4 @@ This tool is for Emicool employees only.
 
 """
 title = st.text_input('Enter your text here')
+txt = st.text_area('Enter your text here', '')
