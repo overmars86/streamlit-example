@@ -6,7 +6,11 @@ import math
 import pandas as pd
 import json
 import streamlit as st
+from PIL import Image
 
+
+image = Image.open("Emicool_Logo.80kb_high_res-removebg-preview.png")
+st.image(image)
 """
 # Welcome to EmiGPT!
 
