@@ -1,5 +1,6 @@
 from collections import namedtuple
 import altair as alt
+import re
 import requests
 import time
 import math
@@ -17,7 +18,9 @@ This tool is for Emicool employees only.
 
 """
 
-
+def clean_text(text):
+    cleaned_text = re.sub("'generated_text':", ' ', text)
+    return cleaned_text
 # Hagging face API
 API_URL = "https://api-inference.huggingface.co/models/grammarly/coedit-large"
 headers = {"Authorization": "Bearer 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"}
@@ -32,5 +35,6 @@ st.button("Improve writing", type="primary")
 
 if txt:
     with st.spinner('Wait for it...'):
-        output = query({"inputs": txt, "options": {"wait_for_model":True}})
-        out_txt = st.text_area("", output)
+        output = query({"inputs": "Write this more formally:f{txt}", "options": {"wait_for_model":True}})
+        cln_txt = clean_text(output)
+        out_txt = st.text_area("", cln_txt)
