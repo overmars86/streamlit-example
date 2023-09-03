@@ -36,5 +36,5 @@ st.button("Improve writing", type="primary")
 if txt:
     with st.spinner('Wait for it...'):
         output = query({"inputs": "Write this more formally:f{txt}", "options": {"wait_for_model":True}})
-        cln_txt = clean_text(output)
-        out_txt = st.text_area("", cln_txt)
+        # cln_txt = clean_text(output)
+        out_txt = st.text_area("", output)
