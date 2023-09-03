@@ -15,7 +15,8 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
     menu_items={
-        'About': "mailto:overmars86@gmail.com"
+         'Get help': 'mailto:overmars86@gmail.com',
+        'About': '# This made by Mohamed Abdelsalam'
     }
     
 )
