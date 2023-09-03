@@ -1,5 +1,4 @@
 from collections import namedtuple
-import altair as alt
 import re
 import requests
 import time
@@ -35,6 +34,6 @@ st.button("Improve writing", type="primary")
 
 if txt:
     with st.spinner('Wait for it...'):
-        output = query({f"inputs": "Write this more formally:f{txt}", "options": {"wait_for_model":True}})
+        output = query({"inputs": "Write this more formally:" + txt, "options": {"wait_for_model":True}})
         # cln_txt = clean_text(output)
         out_txt = st.text_area("", output)
