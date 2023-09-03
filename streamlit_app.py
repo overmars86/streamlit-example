@@ -4,6 +4,7 @@ import requests
 import time
 import math
 import pandas as pd
+import json
 import streamlit as st
 
 """
@@ -18,7 +19,10 @@ This tool is for Emicool employees only.
 """
 
 def clean_text(text):
-    new = text.replace('generated_text:',"")
+    new = text.replace("[{'generated_text':", "")
+    new = new.replace("[{", "")
+    new = new.replace("}]", "")
+    new = new.replace("'", "")
     return new
 # Hagging face API
 API_URL = "https://api-inference.huggingface.co/models/grammarly/coedit-large"
@@ -35,5 +39,6 @@ st.button("Improve writing", type="primary")
 if txt:
     with st.spinner('Wait for it...'):
         output = query({"inputs": "Write this more formally:" + txt, "options": {"wait_for_model":True}})
-        # cln_txt = clean_text(output)
-        out_txt = st.text_area("", output)
+        nor_str = json.dumps(output)
+        cln_txt = clean_text(nor_str)
+        out_txt = st.text_area("", cln_txt)
