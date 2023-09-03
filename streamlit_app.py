@@ -15,9 +15,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': '#',
-        'Report a bug': "#",
-        'About': "# This is app developed by Mohamed Abdelsalam -> overmars86@gmail.com"
+        'Get Help': '/',
+        'Report a bug': "/",
+        'About': "overmars86@gmail.com"
     }
 )
 
