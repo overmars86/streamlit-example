@@ -40,5 +40,6 @@ if txt:
     with st.spinner('Wait for it...'):
         output = query({"inputs": "Write this more formally:" + txt, "options": {"wait_for_model":True}})
         nor_str = json.dumps(output)
+        nor_str = str(nor_str)
         cln_txt = clean_text(nor_str)
         out_txt = st.text_area("", cln_txt)
