@@ -9,6 +9,18 @@ import streamlit as st
 from PIL import Image
 
 
+st.set_page_config(
+    page_title="EmiGPT",
+    page_icon="🧊",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': '#',
+        'Report a bug': "#",
+        'About': "# This is app developed by Mohamed Abdelsalam -> overmars86@gmail.com"
+    }
+)
+
 image = Image.open("Emicool_Logo.80kb_high_res-removebg-preview.png")
 st.image(image)
 """
