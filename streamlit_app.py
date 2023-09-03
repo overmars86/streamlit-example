@@ -13,12 +13,8 @@ st.set_page_config(
     page_title="EmiGPT",
     page_icon="🧊",
     layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': '/',
-        'Report a bug': "/",
-        'About': "overmars86@gmail.com"
-    }
+    initial_sidebar_state="expanded"
+    
 )
 
 image = Image.open("Emicool_Logo.80kb_high_res-removebg-preview.png")
