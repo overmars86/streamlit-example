@@ -21,6 +21,14 @@ st.set_page_config(
     
 )
 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 image = Image.open("Emicool_Logo.80kb_high_res-removebg-preview.png")
 st.image(image)
 """
