@@ -46,6 +46,8 @@ def clean_text(text):
     new = new.replace("[{", "")
     new = new.replace("}]", "")
     new = new.replace("'", "")
+    new = new.replace("summary_text:", "")
+    
     return new
 # Hagging face API
 API_URL_LIST = ["https://api-inference.huggingface.co/models/grammarly/coedit-large",
