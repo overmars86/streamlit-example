@@ -15,8 +15,7 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
     menu_items={
-         'Get help': 'mailto:overmars86@gmail.com',
-        'About': '# This made by Mohamed Abdelsalam'
+        'About': "mailto:overmars86@gmail.com"
     }
     
 )
@@ -33,7 +32,7 @@ This tool is for Emicool employees only.
 
 
 """
-
+promt = ['Fix spelling and grammar:','Paraphrase this:', 'Summarize this:']
 def clean_text(text):
     new = str(text)
     new = new.replace("[{'generated_text':", "")
@@ -42,19 +41,32 @@ def clean_text(text):
     new = new.replace("'", "")
     return new
 # Hagging face API
-API_URL = "https://api-inference.huggingface.co/models/grammarly/coedit-large"
+API_URL_LIST = ["https://api-inference.huggingface.co/models/grammarly/coedit-large",
+           "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"]
 headers = {"Authorization": "Bearer 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"}
+
+
+
+option = st.selectbox(
+    'Please select what you want to do',
+    ('Fix grammar', 'Paraphrase' , 'Summarise', 'Draft'))
+
+if option == 'Summarise':
+    API_URL	= API_URL_LIST[1]
+else: 
+     API_URL = API_URL_LIST[0]
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
 	return response.json()
-	
 
 txt = st.text_area('Enter your text here', '')
-st.button("Improve writing", type="primary")
+st.button("Process the text", type="primary")
 
 if txt:
     with st.spinner('Wait for it...'):
-        output = query({"inputs": "Fix spelling, grammar and write this more professionally:" + txt, "options": {"wait_for_model":True}})
+        output = query({"inputs": option + txt,
+                         "options": {"wait_for_model":True},
+                         "parameters": {"max_length":500}})
         cln_txt = clean_text(output)
         out_txt = st.text_area("", cln_txt)
