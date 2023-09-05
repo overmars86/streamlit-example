@@ -47,7 +47,7 @@ def clean_text(text):
     new = new.replace("}]", "")
     new = new.replace("'", "")
     new = new.replace("summary_text:", "")
-    
+
     return new
 # Hagging face API
 API_URL_LIST = ["https://api-inference.huggingface.co/models/grammarly/coedit-large",
@@ -58,7 +58,7 @@ headers = {"Authorization": "Bearer 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"}
 
 option = st.selectbox(
     'Please select what you want to do',
-    ('Fix grammar', 'Paraphrase' , 'Summarise', 'Draft'))
+    ('Fix the grammar', 'Paraphrase' , 'Summarise', 'Draft'))
 
 if option == 'Summarise':
     API_URL	= API_URL_LIST[1]
@@ -74,7 +74,7 @@ st.button("Process the text", type="primary")
 
 if txt:
     with st.spinner('Wait for it...'):
-        output = query({"inputs": option + txt,
+        output = query({"inputs": option +":"+ txt,
                          "options": {"wait_for_model":True},
                          "parameters": {"max_length":500}})
         cln_txt = clean_text(output)
